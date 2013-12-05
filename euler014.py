@@ -38,7 +38,7 @@ def problema14(N=10):
         k=k*2
         c=c+1 
 
-        # Mata todos los de la forma 3*2^r
+        # Mata todos los de la forma 9*2^r
     k=9
     c=19
     while k<N+1:
