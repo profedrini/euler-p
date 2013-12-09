@@ -68,7 +68,7 @@ def problema14(N=10):
     return L
 
 t=time.time()                                                                                                
-S=problema14(2000000)
+S=problema14(1000000)
 mx=max(S)
 print S.index(mx)
 print time.time()-t

@@ -4,7 +4,7 @@ import time
 
 t1 = time.time()
 
-N=2000000
+N=20000000
 L = [True]*N
 P = []
 S=0
