@@ -1011,8 +1011,14 @@ def factoriza(m):
 	n=m
 
 	if n in Factorizaciones: return Factorizaciones[n]
-
+	
 	F={}
+	
+	if n in ListaPrimos:
+		F[n]=1 
+		Factorizaciones[n]=F
+		return F
+	
 	for p in ListaPrimos:
 		if n==1: 	# Si ya tomamos todos lso factores, nos detenemos
 			Factorizaciones[m]=F
@@ -1062,8 +1068,35 @@ def ndivisores(m):
 
 	n=m
 	F=factoriza(n)
-	p=1
+	r=1
 	for k in F:
-		p=p*(F[k]+1)
-	return p
+		r=r*(F[k]+1)
+	return r
 
+def sumadivisores(m):
+	if m<1: return 0
+	if m==1: return 1
+	r=1
+	F=factoriza(m)
+	for p in F:
+		r = r*(p**(F[p]+1)-1)/(p-1)
+	return r
+
+def sigma(m,k):		
+	if m<1: return 0
+	if m==1: return 1
+	r=1
+	F=factoriza(m)
+	for p in F:
+		r = r*(p**((F[p]+1)*k)-1)/(p**k-1)
+	return r
+
+
+def amigables(a,b):
+	sa = sumadivisores(a)
+	sb = sumadivisores(b)
+
+	if (a ==sb) and (b==sa): 
+		return True
+	else:
+		return False
