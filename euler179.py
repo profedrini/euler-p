@@ -7,7 +7,6 @@ actual = 2  #  n=2 tiene 2 divisor
 n=2
 conteo = 0
 for n in  xrange(2,10**7):
-	#if n%10000==0: print n,"..",
 	siguiente = ndivisores(n+1)
 	if actual ==siguiente: conteo = conteo+1
 	actual=siguiente
