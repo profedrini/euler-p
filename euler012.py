@@ -1,6 +1,5 @@
 import time
-from primos import ndivisores
-import primos
+from aritmetica import ndivisores
 t=time.time()
 
 cota=500
@@ -22,4 +21,3 @@ while True:
 
 print time.time()-t
 
-print primos.Factorizaciones
