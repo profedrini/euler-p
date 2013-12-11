@@ -1,5 +1,5 @@
 import time
-from primos import ndivisores
+from aritmetica import ndivisores
 
 t=time.time()
 
