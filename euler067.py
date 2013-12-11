@@ -4,6 +4,7 @@ entrada = open("triangle.txt","r")
 D=[]
 for l in entrada:
 	D.append(map(int,l.split()))
+entrada.close()
 
 nrows= len(D)
 
