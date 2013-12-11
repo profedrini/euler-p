@@ -1067,12 +1067,3 @@ def ndivisores(m):
 		p=p*(F[k]+1)
 	return p
 
-'''for k in range(2,220):
-	print k,factoriza(k)
-
-print "===="
-for k in Factorizaciones:
-	print k, Factorizaciones[k]
-'''
-
-print ndivisores(216)
