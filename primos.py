@@ -1,3 +1,7 @@
+#coding=utf8
+
+Factorizaciones={}
+
 ListaPrimos=[\
       2,     3,     5,     7,    11,    13,    17,    19,    23,    29,\
      31,    37,    41,    43,    47,    53,    59,    61,    67,    71,\
@@ -1000,3 +1004,75 @@ ListaPrimos=[\
  104549,104551,104561,104579,104593,104597,104623,104639,104651,104659,\
  104677,104681,104683,104693,104701,104707,104711,104717,104723,104729]
 
+
+	
+
+def factoriza(m):
+	n=m
+
+	if n in Factorizaciones: return Factorizaciones[n]
+
+	F={}
+	for p in ListaPrimos:
+		if n==1: 	# Si ya tomamos todos lso factores, nos detenemos
+			Factorizaciones[m]=F
+			return F
+
+		if p*p>n:
+			# n es primo, no hay necesidad de seguir probando
+			F[n]=1
+			Factorizaciones[m]=F
+			return F
+
+		if n%p==0:
+			k=0	
+			while n%p == 0 :
+				#  p|n, extraemos los factores
+				k = k+1
+				n = n/p
+			F[p]=k
+
+
+			if n==1: 
+				Factorizaciones[m]=F
+				return F    # Si no quedan más factores, nos detenemos
+
+			if n in Factorizaciones:
+				# Si ya conocemos la factorización de lo que obtuvimos al dividir por p^k
+				F.update(Factorizaciones[n])  # fusionamos y terminamos
+				Factorizaciones[m]=F
+				return F
+		
+
+
+
+def qfactor(m):
+	if m in Factorizaciones:
+		return Factorizaciones[m]
+	else:
+		F=factoriza(m)
+		Factorizaciones[m]=F
+		return F
+
+
+
+def ndivisores(m):
+	if m<1: return 0
+	if m==1: return 1
+
+	n=m
+	F=factoriza(n)
+	p=1
+	for k in F:
+		p=p*(F[k]+1)
+	return p
+
+'''for k in range(2,220):
+	print k,factoriza(k)
+
+print "===="
+for k in Factorizaciones:
+	print k, Factorizaciones[k]
+'''
+
+print ndivisores(216)
