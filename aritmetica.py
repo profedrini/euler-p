@@ -1019,7 +1019,7 @@ ListaPrimos=[\
  104677,104681,104683,104693,104701,104707,104711,104717,104723,104729]
 
 
-	
+ConjuntoPrimos = set(ListaPrimos)
 
 def factoriza(m):
 	n=m
@@ -1028,13 +1028,13 @@ def factoriza(m):
 	
 	F={}
 	
-	if n in ListaPrimos:
+	if n in ConjuntoPrimos:
 		F[n]=1 
 		Factorizaciones[n]=F
 		return F
 	
 	for p in ListaPrimos:
-		if n==1: 	# Si ya tomamos todos lso factores, nos detenemos
+		if n==1: 	# Si ya tomamos todos los factores, nos detenemos
 			Factorizaciones[m]=F
 			return F
 
