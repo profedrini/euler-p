@@ -1,6 +1,9 @@
 #coding=utf8
 from aritmetica import *
 import time
+
+LP =set(ListaPrimos)  # No necesitamos el orden, unicamente determinar pertenencia (~ 100x veces más rápido )
+
 def cuentaprimos(a,b):
 	'''Cuenta cuántos primos consecutivos hay
 	al evaluar x^2 + ax + b   para x=0, 1, 2,...
@@ -8,7 +11,7 @@ def cuentaprimos(a,b):
 	x = 0
 	while True:
 		s = x*x + a*x + b
-		if s in ListaPrimos:
+		if s in LP:
 			x = x+1
 		else:
 			return x
