@@ -2,6 +2,20 @@
 
 Factorizaciones={}
 
+Factoriales=[1, 1, 2, 6, 24] #, 120, 720, 5040, 40320, 362880, 3628800, 39916800, 479001600, 6227020800, 87178291200, 1307674368000, 20922789888000, 355687428096000, 6402373705728000, 121645100408832000, 2432902008176640000]
+
+def factorial(n):
+	if n<0: return 
+	if n < len(Factoriales):
+		return Factoriales[n]
+	else:
+		f = Factoriales[-1]
+		r = len(Factoriales)
+		for k in range(r,n+1):
+			f=f*k
+			Factoriales.append(f)
+		return f
+
 ListaPrimos=[\
       2,     3,     5,     7,    11,    13,    17,    19,    23,    29,\
      31,    37,    41,    43,    47,    53,    59,    61,    67,    71,\
@@ -1049,18 +1063,6 @@ def factoriza(m):
 				Factorizaciones[m]=F
 				return F
 		
-
-
-
-def qfactor(m):
-	if m in Factorizaciones:
-		return Factorizaciones[m]
-	else:
-		F=factoriza(m)
-		Factorizaciones[m]=F
-		return F
-
-
 
 def ndivisores(m):
 	if m<1: return 0
