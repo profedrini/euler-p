@@ -1,6 +1,8 @@
+from aritmetica import ListaPrimos
 n=600851475143
-for k in xrange(3,n,2):
+for k in ListaPrimos:
 	if n % k == 0 :
-		n = n/k
-		print k, n
+		while (n%k==0):
+			n = n/k
+		print k
 	if n < 2: break
