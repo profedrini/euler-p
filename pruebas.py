@@ -1,25 +1,29 @@
-from aritmetica import abundante
+#coding=utf8
+from aritmetica import *
 import time
+def cuentaprimos(a,b):
+	'''Cuenta cuántos primos consecutivos hay
+	al evaluar x^2 + ax + b   para x=0, 1, 2,...
+	'''
+	t = 0
+	x = 0
+	while True:
+		s = x*x + a*x + b
+		if s in ListaPrimos:
+			x = x+1
+			t = t+1
+		else:
+			return t
 
 t=time.time()
-top = 28124
-abundantes= filter(abundante,xrange(top))
+T=1000
+mx = 2
+for b in range(T):
+	if b in ListaPrimos:
+		for a in range(-T,T):
+			cp=cuentaprimos(a,b)
+			if cp>mx:
+				print "(%d,%d) -> %d" % (a,b,cp)
+				mx = cp
 
-L = range(top)
-
-nab = len(abundantes)
-print "hay %d abundantes menores que %d " % (nab,top)
-
-for i in range(nab):
-	r = abundantes[i]
-	for j in range(i,nab):
-		s=abundantes[j]
-		#print (r,s)
-		if r+s<top:
-			if L[r+s]>0:
-				L[r+s]=0
-		else:
-			break
-
-print sum(L)
-print time.time()-t,"segundos"
+print time.time() -t 
