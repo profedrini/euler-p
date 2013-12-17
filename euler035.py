@@ -3,7 +3,6 @@ import math
 import time
 
 def rotar(n):
-    #print "n:", n
     k = int(math.floor(math.log10(n)))  # n tiene k cifras
     for i in range(k+1):
         if (not aritmetica.EsPrimo(n)):
