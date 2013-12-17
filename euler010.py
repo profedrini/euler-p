@@ -1,34 +1,32 @@
 import math
 import time
 
-
 t1 = time.time()
 
-N=20000000
-L = [True]*N
+N=2000001
+L = [1]*N
 P = []
 S=0
-L[0]=False
-L[1]=False
+L[0]=0
+L[1]=0
 
-for m in range(N):
-	if L[m] == True:
+for m in xrange(N):
+	if L[m] !=0:
+		L[m]=m
 		#P.append(m)
-		for k in range(2,int((N+1)/m)+1):
+		for k in xrange(2,int((N+1)/m)+1):
 			if m*k < N:
-				L[m*k]=False
+				L[m*k]=0
 
-S=0
+'''S=0
 for k in range(N-1):
 	if L[k]==True:
 		# L[k]=k
 		S =S+k
-
-
-#print(sum(P))
+'''
+S=sum(L)
 print(S)
 t2=  time.time()
 
 print(t2-t1)
-#print(L)
 		
