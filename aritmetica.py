@@ -1,4 +1,5 @@
 #coding=utf8
+from itertools import takewhile
 
 Factorizaciones={}
 
@@ -11,7 +12,7 @@ def factorial(n):
 	else:
 		f = Factoriales[-1]
 		r = len(Factoriales)
-		for k in range(r,n+1):
+		for k in xrange(r,n+1):
 			f=f*k
 			Factoriales.append(f)
 		return f
@@ -1021,6 +1022,7 @@ ListaPrimos=[\
 
 ConjuntoPrimos = set(ListaPrimos)
 
+        
 def factoriza(m):
 	n=m
 
@@ -1125,3 +1127,26 @@ def deficiente(n):
 		return True
 	else:
 		return False
+
+
+def EsPrimo(n):
+    #ConjuntoPrimos=set(ListaPrimos)
+    LP = ListaPrimos[-1]
+    if (n <= LP):
+        if (n in ConjuntoPrimos):
+            return True
+        else:
+            return False
+        
+    elif (LP<n) and (n<LP*LP):
+        # Podemos usar la tabla para calcular rápidamente
+        for p in takewhile(lambda x: x*x<=n, ListaPrimos):
+            if n%p == 0 : 
+                return False
+                
+        return True
+    else:
+        print "EsPrimo no es confiable!"
+        return None
+        
+        
