@@ -1,4 +1,6 @@
-def rotate(
+import aritmetica
+import math
+import time
 def generar(l,digits):
 	'''genera los numeros con digitos 1,3,7,9 y l cifras en orden creciente'''
 	if l==1: return digits
@@ -11,12 +13,7 @@ def generar(l,digits):
 	return L
 
 
-print generar(3,[1,3,7,9])
 	
-=======
-import aritmetica
-import math
-import time
 
 def rotar(n):
     k = int(math.floor(math.log10(n)))  # n tiene k cifras
