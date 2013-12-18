@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 def rotate(
 def generar(l,digits):
 	'''genera los numeros con digitos 1,3,7,9 y l cifras en orden creciente'''
@@ -38,4 +37,3 @@ print L
 c=len(set(L))
 print c
 print time.time()-t
->>>>>>> dac5673b7e6a044a38a63b2737bbbffd179f893e

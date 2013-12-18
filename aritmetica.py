@@ -1129,7 +1129,6 @@ def deficiente(n):
 		return False
 
 
-<<<<<<< HEAD
 def GCD(a,b):
 	if a == b : return a
 	if a ==0 : return b
@@ -1169,4 +1168,3 @@ def EsPrimo(n):
         return None
         
         
->>>>>>> dac5673b7e6a044a38a63b2737bbbffd179f893e
