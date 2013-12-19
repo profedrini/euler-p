@@ -1129,6 +1129,24 @@ def deficiente(n):
 		return False
 
 
+def GCD(a,b):
+	if a == b : return a
+	if a ==0 : return b
+	if b == 0: return a
+	if a==1: return 1
+	if b==1: return 1
+	return GCD(b,a % b)
+
+def ListGCD(L):
+	return reduce(GCD,L)
+
+def LCM(a,b):
+	return a*b/mcd(a,b)
+
+def ListLCM(L):
+	return reduce(LCM, L,1)
+
+
 def EsPrimo(n):
     #ConjuntoPrimos=set(ListaPrimos)
     LP = ListaPrimos[-1]
