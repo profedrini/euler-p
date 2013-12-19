@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-# Creamos el conjunto de los primeros 1000 números triangulares
-triangles =set([k*(k+1)/2 for k in range(1000)])
+# Creamos el conjunto de los primeros 100 números triangulares
+triangles =set([k*(k+1)/2 for k in range(100)])
 
 def valor(c):
     return ord(c)-64    # Valor de la letra c
