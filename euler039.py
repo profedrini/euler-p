@@ -1,7 +1,4 @@
 #coding=utf8
-import itertools
-import operator
-from itertools import imap
 
 '''Este programa cuenta el numero de ternas pitagóricas cuyo suma es menor o igual a 10 millones'''
 
@@ -12,7 +9,7 @@ t1 = time.time()
 TP = [[3,4,5]]
 perim = 10**3 +1
 c=0
-sumas=[0 for k in xrange(1001)]
+sumas={k:0 for k in xrange(1001)}
 
 
 while len(TP)>0:
@@ -34,7 +31,10 @@ while len(TP)>0:
 	nuevas= [terna for terna in [terna1,terna2,terna3] if sum(terna)<= perim ]
 	TP.extend(nuevas)
 
-
-mx = max(sumas)
-print sumas.index(mx)
+mx = max(sumas.values())
+n=0
+for k,v in sumas.iteritems():
+	if v == mx:
+		print (n,v)
+		break
 print time.time() - t1
