@@ -25,7 +25,7 @@ while a>=0:
 	x = cabe(a,10)
 	print x, "removing pos %d = %d from " % (x[2], digits[x[2]]), digits,
 	d = digits.pop(x[2])
-	print "sobra", digits
+	print "  left:", digits
 	permutacion.append(d)
 	if len(digits)<1 : break	
 	a = x[3]
