@@ -1,5 +1,5 @@
 #coding=utf8
-from itertools import takewhile
+from itertools import *
 from listaprimos import *
 import math
 
@@ -186,3 +186,32 @@ def digitos(n):
 
 def ndigitos(n):
    return int(math.floor(math.log10(n)))  # n tiene k cifras
+   
+def pandigital(dg,k=9, start=1):
+    if len(dg)!= k:
+        return False
+    else:
+        if sorted(dg)==range(start,k+1):
+            return True
+        else:
+            return False
+
+def pandigitalstr(s,k=9, start=1):
+    if len(s)!=9:
+        return False
+    else:
+        dg = map(int, str(s))
+        return pandigital(dg, k,start)
+        
+def pandigitalgenerator(start=1,end=9,direction=True, string=False):
+    if direction==False:
+        digits=map(str,range(end, start-1,-1))
+    else:
+        digits=map(str,range(start, end+1))
+
+    for p in permutations(digits):
+        if string:
+            n="".join(p)
+        else:
+            n=int("".join(p))
+        yield n
