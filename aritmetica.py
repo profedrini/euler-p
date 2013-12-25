@@ -204,14 +204,16 @@ def pandigitalstr(s,k=9, start=1):
         return pandigital(dg, k,start)
         
 def pandigitalgenerator(start=1,end=9,direction=True, string=False):
+    digits=range(start, end+1)
+    if string:
+        digits=map(str,digits)
     if direction==False:
-        digits=map(str,range(end, start-1,-1))
-    else:
-        digits=map(str,range(start, end+1))
+        digits=digits[::-1]
 
     for p in permutations(digits):
         if string:
             n="".join(p)
         else:
-            n=int("".join(p))
+            n=p
         yield n
+        
