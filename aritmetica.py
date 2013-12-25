@@ -217,3 +217,9 @@ def pandigitalgenerator(start=1,end=9,direction=True, string=False):
             n=p
         yield n
         
+def EsPalindromo(n):
+    s=str(n)
+    if s == s[::-1]:
+        return True
+    else:
+        return False
