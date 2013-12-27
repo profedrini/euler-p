@@ -185,7 +185,7 @@ def digitos(n):
     return L
 
 def ndigitos(n):
-   return int(math.floor(math.log10(n)))  # n tiene k cifras
+   return int(math.floor(math.log10(n)))+1  # n tiene k cifras
    
 def pandigital(dg,k=9, start=1):
     if len(dg)!= k:
@@ -223,3 +223,16 @@ def EsPalindromo(n):
         return True
     else:
         return False
+        
+def totient(n):
+    if n<1:
+        raise ValueError("Euler's Totient is not defined for zero or negative numbers")
+    if n==1: return 1
+    if n in ConjuntoPrimos: 
+        return n-1
+        
+    tot=n
+    K = factoriza(n)
+    for p in K:
+        tot = tot*(p-1)/p
+    return tot
