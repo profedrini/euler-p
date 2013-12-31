@@ -13,7 +13,11 @@ print "precalculando..."
 
 CUBOS = {n**3 for n in range(10**5)}
 T1=time.time()
+D={}
 
+for n in xrange(10**5):
+    digs=tuple(sorted(digitos))
+    
 def l2i(L):
     l=L[::-1]
     return     sum( [a*10**(k) for (k,a) in enumerate(l)])
