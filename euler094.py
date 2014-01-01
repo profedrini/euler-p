@@ -92,5 +92,5 @@ for k in xrange(1,10**9/3):
         print k,k+1, 3*k+1,  ((2*k+1),2*k), "\tt:", time.time()-T1, c
         S=S+2*(2*k+1)+2*k
 print "matches:",c
-print "suma de perímetros", S
+print "suma de perímetros", S-4 # REstamos 4 para descartar el pseudtriángulo (1,1,2)
 print "total time:",time.time()-T0
