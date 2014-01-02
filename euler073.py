@@ -12,6 +12,10 @@ L=[]
 S=0
 for d in range(3,12001):
     L.extend(fracciones(d))
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> devel
 print len(L)
 print time.time()-T0

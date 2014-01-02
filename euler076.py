@@ -1,25 +1,22 @@
-from itertools import *
+'''Problem 76
+It is possible to write five as a sum in exactly six different ways:
 
-N = 9
-coins = range(1,N)
+4 + 1
+3 + 2
+3 + 1 + 1
+2 + 2 + 1
+2 + 1 + 1 + 1
+1 + 1 + 1 + 1 + 1
 
+How many different ways can one hundred be written as a sum of at least two positive integers?
+'''
+from aritmetica import sumadivisores
 
-def paga(n, allowed, level=1):
-	'''regresa las formas de pagar $n usando monedas menores o iguales a $top)'''
-	L=[]
-	if n<1: return [[]]
-	for (i,a) in enumerate(allowed):
-		#if level==1: print a,
-		if a > n:
-			pass
-		else:
-			suballowed = allowed[i:]
-			SL=paga(n-a, suballowed,level+1)
-			nuevas=[ [a]+s for s in SL ]
-			L.extend(nuevas)
-	return L
+P=[1,1,2,3,5,7,11]
 
-U=paga(N,coins)
-#print U
-print
-print len(U)
+for n in xrange(7,101):
+    p = sum([sumadivisores(n-k)*P[k] for k in range(n)])/n
+    #print n, ": sumando", [((n-k,k),(ndivisores(n-k),P[k])) for k in range(n)]
+    P.append(p)
+
+print P[100]
