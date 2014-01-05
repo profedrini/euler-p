@@ -13,30 +13,6 @@ def decode(data, triplet):
 def translate(data):
     return "".join(map(chr, data))    
 
-def check(s, maxerrors):
-    valid=[32]
-    valid.extend(range(65,91))  # [A-Z]
-    valid.extend(range(97,122)) # [A-Z]
-    fails=0
-    for c in s:
-        if (ord(c)) not in  valid:
-            fails=fails+1
-        
-    if fails > maxerrors:
-        return False
-    else: 
-        return True
-
-def check2(s, word):
-    if word in s: 
-        return True
-    if word.upper() in s:
-        return True
-    if word.lower() in s:
-        return True
-    else:
-        return False
-                        
 for a in rango:
     for b in rango:
         for c in rango:
