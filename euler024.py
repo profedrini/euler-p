@@ -1,6 +1,6 @@
 #coding=utf8
 from aritmetica import factorial
-
+    
 def cabe(a, n=10):
 	'''determina cual es el mayor factorial menor a n! que 
 		quepa en el número a, cuántas veces cabe y cual es el residuo'''
@@ -18,8 +18,8 @@ def cabe(a, n=10):
 	return (a,t, (a-1)/f, a%f)
 
 
-a=1000000
-digits = [0,1,2,3,4,5,6,7,8,9]
+a=2014
+digits = [1,2,3,4,5,6,7,8,9]
 permutacion=[]
 while a>=0:
 	x = cabe(a,10)

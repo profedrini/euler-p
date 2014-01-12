@@ -1,0 +1,34 @@
+# -*- coding: utf-8 -*-
+
+NumberSet=["2","3","4","5","6","7","8","9","T","J","Q","K","A"]
+
+
+def parsehands(line):
+    x=line.split()
+    P1 = map(separa,x[:5])
+    P2 = map(separa,x[5:])
+    return (rank(P1), rank(P2))
+
+def par(P):
+    numeros=set([C[0] for C in P])
+    if len(numeros)==4: 
+        return True
+        # Hay una repetición, por tanto solo hay 4 valores distintos
+
+def corrida(P):
+    numeros=set([C[0] for C in P])
+    print "numeros...",numeros
+    lista=["A","2","3","4","5","6","7","8","9","T","J","Q","K","A"]
+    corridas= [set(lista[k:k+5]) for k in range(10)]
+    if numeros in corridas:
+        return (True, corridas.index(numeros))
+        
+def rank(P):
+    return P
+    
+def separa(s):
+    return (s[0],s[1])
+    
+print corrida(map(separa,"4J 2K AS 3T 5R".split()))
+
+# print parsehands("3H 7H 6S KC JS QH TD JC 2D 8S")
