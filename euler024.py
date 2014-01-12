@@ -1,6 +1,6 @@
 #coding=utf8
 from aritmetica import factorial
-
+    
 def cabe(a, n=10):
 	'''determina cual es el mayor factorial menor a n! que 
 		quepa en el número a, cuántas veces cabe y cual es el residuo'''
