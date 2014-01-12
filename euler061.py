@@ -43,7 +43,7 @@ def Search(p,listas, chain):
     '''Determina si p puede continuar con algun término en "listas"'''
     if len(listas)<1:
         print "ACABAMOS", chain
-        return
+        return []
 
     par = final(p)
     for L in listas:
@@ -54,6 +54,8 @@ def Search(p,listas, chain):
             print "\t"*len(chain),candidatos
             for c in candidatos:
                 Search(c,newlistas,chain+[c])
+
+			
 
 p=(1,4,0,8)
 LISTAS=[DigHeptas,DigHexas, DigPentas, DigCuads,DigTriangs]

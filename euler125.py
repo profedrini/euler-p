@@ -18,11 +18,20 @@ Por otro lado
 a^2+ (a+1)^2 + ... + (b-1)^2 + (b)^2 = [b(b+1)(2b+1) - (a-1)(a)(2*(a-1)+1]/6
 '''
 from aritmetica import EsPalindromo
+import time
+T0=time.time()
 L=[]
 c=0
-for b in xrange(2,7073):
-    for a in xrange(1,b):
-        suma = (b*(b+1)*(2*b+1)- (a-1)*(a)*(2*(a-1)+1))/6
-        if EsPalindromo(suma) and suma<10**8:
+
+SCUADS = [n*(n+1)*(2*n+1)/6 for n in xrange(7074)]
+
+for a in xrange(1,7072):
+    for b in xrange(a+1, 7073):
+        #suma = (b*(b+1)*(2*b+1)- (a-1)*(a)*(2*(a-1)+1))/6
+        suma = SCUADS[b] - SCUADS[a-1]
+        if suma>10**8:
+            break
+        if suma<10**8 and EsPalindromo(suma) :
             L.append(suma)
 print sum(set(L))
+print time.time()-T0

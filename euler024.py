@@ -18,8 +18,8 @@ def cabe(a, n=10):
 	return (a,t, (a-1)/f, a%f)
 
 
-a=1000000
-digits = [0,1,2,3,4,5,6,7,8,9]
+a=2014
+digits = [1,2,3,4,5,6,7,8,9]
 permutacion=[]
 while a>=0:
 	x = cabe(a,10)
