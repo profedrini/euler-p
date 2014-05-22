@@ -18,46 +18,49 @@ Find the sum of the only ordered set of six cyclic 4-digit numbers for which eac
 '''
 from aritmetica import digitos
 
-TRIANGS = [n*(n+1)/2 for n in range(44,141)]
-CUADS = [n*n for n in range(31,101)]
-PENTAS = [n*(3*n-1)/2 for n in range(25,82)]
-HEXAS = [n*(2*n-1) for n in range(22,71)]
-HEPTAS = [n*(5*n-3)/2 for n in range(20,64)]
-OCTAS = [n*(3*n-2) for n in range(18,59)]
+TRIANGS = [str(n*(n+1)/2) for n in range(45,141)]
+CUADS = [str(n*n) for n in range(32,101)]
+PENTAS = [str(n*(3*n-1)/2) for n in range(24,82)]
+HEXAS = [str(n*(2*n-1)) for n in range(23,71)]
+HEPTAS = [str(n*(5*n-3)/2) for n in range(21,64)]
+OCTAS = [str(n*(3*n-2)) for n in range(19,59)]
 
-DigTriangs = {tuple(digitos(a)) for a in TRIANGS}
-DigCuads = {tuple(digitos(a)) for a in CUADS}
-DigPentas = {tuple(digitos(a)) for a in PENTAS}
-DigHexas = {tuple(digitos(a)) for a in HEXAS}
-DigHeptas = {tuple(digitos(a)) for a in HEPTAS}
-DigOctas = {tuple(digitos(a)) for a in OCTAS}
+L = [TRIANGS, CUADS, PENTAS, HEXAS, HEPTAS, OCTAS]
 
-def inicio(p):
-    return (p[0],p[1])
 
-def final(p):
-    return (p[2],p[3])
-    
-def Search(p,listas, chain):
-    print "trying:", p, len(listas), chain
-    '''Determina si p puede continuar con algun término en "listas"'''
-    if len(listas)<1:
-        print "ACABAMOS", chain
-        return []
+def CheckPrefijo(s,x):
+#	if set(s[-2:])==set(x[:2]):
+        if s[-2:] == x[:2]:
+		return True
+	else:
+		return False
 
-    par = final(p)
-    for L in listas:
-        candidatos = [q for q in L if inicio(q) == par]
-        if len(candidatos)>0:
-            newlistas = listas[:]
-            newlistas = newlistas.remove(L)
-            print "\t"*len(chain),candidatos
-            for c in candidatos:
-                Search(c,newlistas,chain+[c])
 
-			
+def Forward(s,track, chain):
+    #print "last:",s, "cadena:", chain, track
+    if not(any(track)): 
+        if CheckPrefijo(chain[-1],chain[0]):
+            print "DING!", chain, sum(map(int,chain))
+            return chain #Se agoto la cadena
+    prevtrack = track[:]
+    for k in range(6):
+        if prevtrack[k]>0:
+            # Buscamos en la k-esima lista
+            #print "\t checking list",k,
+            moves = [x for x in L[k] if CheckPrefijo(s,x)]
+            #print moves
+            if len(moves)>0:  # Si podemos avanzar
+                nextrack = track[:]
+                nextrack[k] = 0   # Ya no podemos volver a tomar de esta lista
+                for m in moves:
+                    cadena = chain[:] + [m]
+                    Forward(m, nextrack, cadena)
 
-p=(1,4,0,8)
-LISTAS=[DigHeptas,DigHexas, DigPentas, DigCuads,DigTriangs]
-CHAIN=[p]
-Search(p, LISTAS, CHAIN)
+# Dado que la  cadena es cíclica, podemos comenzar
+# revisando en cualquiera de las listas, y sólo hay que avanzar, 
+# no es necesario verificar en dirección contraria.
+for a in OCTAS:
+    TRACK=[1,1,1,1,1,0]
+    CHAIN = [a]
+    Forward(a, TRACK, CHAIN)
+

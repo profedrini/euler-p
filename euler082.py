@@ -34,7 +34,7 @@ for r in xrange(nRows):
     Aristas[(r,nRows-1)] = [TARGET]   # Nodos de la fila derecha
 
 Aristas[START] = [(r,0) for r in xrange(nRows)]
-print Aristas[START]
+#print Aristas[START]
 
 while actual != TARGET:
     for u in Aristas[actual]:
