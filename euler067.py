@@ -9,7 +9,6 @@ entrada.close()
 nrows= len(D)
 
 for r in range(nrows-2,-1,-1):
-
 	for k in range(len(D[r])):
 		D[r][k] = D[r][k] + max(D[r+1][k] , D[r+1][k+1])
 
