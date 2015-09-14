@@ -22,7 +22,7 @@ def factorial(n):
 		return f
 
 
-        
+		
 def factoriza(m):
 	n=m
 
@@ -148,93 +148,91 @@ def ListLCM(L):
 
 
 def EsPrimo(n):
-    #ConjuntoPrimos=set(ListaPrimos)
-    LP = ListaPrimos[-1]
-    if (n <= LP):
-        if (n in ConjuntoPrimos):
-            return True
-        else:
-            return False
-        
-    elif (LP<n) and (n<LP*LP):
-        # Podemos usar la tabla para calcular rápidamente
-        for p in takewhile(lambda x: x*x<=n, ListaPrimos):
-            if n%p == 0 : 
-                return False
-                
-        return True
-    else:
-        print "EsPrimo no es confiable!", LP, n, LP*LP
-        return False
-
-
+	#ConjuntoPrimos=set(ListaPrimos)
+	LP = ListaPrimos[-1]
+	if (n <= LP):
+		if (n in ConjuntoPrimos):
+			return True
+		else:
+			return False
+		
+	elif (LP<n) and (n<LP*LP):
+		# Podemos usar la tabla para calcular rápidamente
+		for p in takewhile(lambda x: x*x<=n, ListaPrimos):
+			if n%p == 0 : 
+				return False
+				
+		return True
+	else:
+		print("EsPrimo no es confiable!", LP, n, LP*LP)
+		return False
 
 def sumadigitos(n):
-    sd=0
-    while n >0:
-	d = n%10
-	sd= sd + d
-	n = n//10
-    return sd
+	sd=0
+	while n >0:
+		d = n%10
+		sd= sd + d
+		n = n//10
+	return sd
 
 
 def digitos(n):
-    L=[]
-    while n >0:
-	d=n%10
-	L.append(d)
-	n=n//10
-    return L
+	L=[]
+	while n >0:
+		d=n%10
+		L.append(d)
+		n=n//10
+	return L
 
 def ndigitos(n):
    return int(math.floor(math.log10(n)))+1  # n tiene k cifras
    
 def pandigital(dg,k=9, start=1):
-    if len(dg)!= k:
-        return False
-    else:
-        if sorted(dg)==range(start,k+1):
-            return True
-        else:
-            return False
+	if len(dg)!= k:
+		return False
+	else:
+		if sorted(dg)==range(start,k+1):
+			return True
+		else:
+			return False
 
 def pandigitalstr(s,k=9, start=1):
-    if len(s)!=9:
-        return False
-    else:
-        dg = map(int, str(s))
-        return pandigital(dg, k,start)
-        
+	if len(s)!=9:
+		return False
+	else:
+		dg = map(int, str(s))
+		return pandigital(dg, k,start)
+		
 def pandigitalgenerator(start=1,end=9,direction=True, string=False):
-    digits=range(start, end+1)
-    if string:
-        digits=map(str,digits)
-    if direction==False:
-        digits=digits[::-1]
+	digits=range(start, end+1)
+	if string:
+		digits=map(str,digits)
+	if direction==False:
+		digits=digits[::-1]
 
-    for p in permutations(digits):
-        if string:
-            n="".join(p)
-        else:
-            n=p
-        yield n
-        
+	for p in permutations(digits):
+		if string:
+			n="".join(p)
+		else:
+			n=p
+		yield n
+		
 def EsPalindromo(n):
-    s=str(n)
-    if s == s[::-1]:
-        return True
-    else:
-        return False
-        
+	s=str(n)
+	if s == s[::-1]:
+		return True
+	else:
+		return False
+		
 def totient(n):
-    if n<1:
-        raise ValueError("Euler's Totient is not defined for zero or negative numbers")
-    if n==1: return 1
-    if n in ConjuntoPrimos: 
-        return n-1
-        
-    tot=n
-    K = factoriza(n)
-    for p in K:
-        tot = tot*(p-1)/p
-    return tot
+	if n<1:
+		raise ValueError("Euler's Totient is not defined for zero or negative numbers")
+	if n==1: return 1
+	if n in ConjuntoPrimos: 
+		return n-1
+		
+	tot=n
+	K = factoriza(n)
+	for p in K:
+		tot = tot*(p-1)/p
+	return tot
